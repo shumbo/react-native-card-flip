@@ -16,18 +16,20 @@ class CardFlip extends Component<Props> {
       zoom: new Animated.Value(0),
       rotateOrientation: "",
       flipDirection: "y",
-      flipReverse: false,
+      flipReverse: false
     }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.duration !== prevState.duration ||
       nextProps.flipZoom !== prevState.flipZoom ||
-      nextProps.children !== prevState.sides) {
+      nextProps.children !== prevState.sides ||
+      nextProps.flipReverse !== prevState.flipReverse) {
       return {
         duration: nextProps.duration,
         flipZoom: nextProps.flipZoom,
-        sides: nextProps.children
+        sides: nextProps.children,
+        flipReverse: nextProps.flipReverse
       }
     }
     return null;
@@ -38,7 +40,8 @@ class CardFlip extends Component<Props> {
     this.setState({
       duration: this.props.duration,
       flipZoom: this.props.flipZoom,
-      sides: this.props.children
+      sides: this.props.children,
+      flipReverse: this.props.flipReverse
     });
   }
 
